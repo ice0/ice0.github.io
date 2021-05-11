@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Host to net/Net to host (htons/htonl) online converter</title>
+    </head>
+    <script>
+        function htons(value) {
+            return (value & 0x00ff) << 8 | 
+                   (value & 0xff00) >> 8
+                    
+
+        }
+
+        function htonl(value) {
+            return ((value & 0xff000000) >> 24 |
+                    (value & 0x00ff0000) >> 8  |
+                    (value & 0x0000ff00) << 8  |
+                    (value & 0x000000ff) << 24) >>> 0
+
+        }
+
+        function calc() {
+            htons_v = parseInt(document.getElementById('htons_v').value)
+            htonl_v = parseInt(document.getElementById('htonl_v').value)
+
+            //console.log(htons_v)
+
+            //console.log(Number.isInteger(htons_v))
+
+            document.getElementById('htons_r').innerHTML = ''
+            document.getElementById('htonl_r').innerHTML = ''
+
+            if (Number.isInteger(htons_v)) {
+                document.getElementById('htons_r').innerHTML = htons(htons_v)
+            }
+
+            if (Number.isInteger(htonl_v)) {
+                document.getElementById('htonl_r').innerHTML = htonl(htonl_v)
+            }
+        }
+    </script>
+<body>
+
+<h3>Host to net/Net to host (htons/htonl) online converter</h1>
+<p>Please enter value:</p>
+<div>
+    Htons (int16): <input type="text" id="htons_v" onkeyup="calc()"> <span id="htons_r">0</span>
+</div>
+<p>
+    Htonl (int32): <input type="text" id="htonl_v" onkeyup="calc()"> <span id="htonl_r">0</span>
+</p>
+
+test
+
+</body>
+</html> 
