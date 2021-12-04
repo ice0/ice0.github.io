@@ -34,6 +34,7 @@ function onDrag(ev) {
     
     document.querySelector('.sidebar').style.width = offset.toString() + "px";
     document.querySelector('.content').style.marginLeft = (offset + 10).toString() + "px";
+    document.body.classList.add('drag-sidebar');
 }
 
 document.querySelector('.handle').addEventListener('mousedown', event => {
@@ -44,6 +45,7 @@ document.querySelector('.handle').addEventListener('mousedown', event => {
   
   document.addEventListener('mouseup', e => {
     document.removeEventListener('mousemove', onDrag);
+    document.body.classList.remove('drag-sidebar');
   });
 
 });
