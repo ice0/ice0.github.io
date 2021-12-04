@@ -1,26 +1,15 @@
-.container {
-    /*background-color: lightpink;*/
-    width: 100%;
-    height: 100%;
-}
-
-.noselect {
-    cursor: col-resize;
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
-}
-
 html, body {
     width: 100%;
     height: 100%;
     /*background-color: lightsalmon;*/
     padding: 0;
     margin: 0;
+}
+
+.container {
+    /*background-color: lightpink;*/
+    width: 100%;
+    height: 100%;
 }
 
 .sidebar {
@@ -39,6 +28,7 @@ html, body {
     background: #ddd;
     cursor: col-resize;
 }
+
 .content {
     margin-left: 210px;
     height: 100%;

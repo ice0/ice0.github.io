@@ -4,7 +4,7 @@
 <head>
   <meta name="description" content="Webpage description goes here" />
   <meta charset="utf-8">
-  <title>Some Title</title>
+  <title>Change_me</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -34,15 +34,16 @@ function onDrag(ev) {
     
     document.querySelector('.sidebar').style.width = offset.toString() + "px";
     document.querySelector('.content').style.marginLeft = (offset + 10).toString() + "px";
-    document.body.classList.add('noselect');
 }
 
-document.querySelector('.handle').addEventListener('mousedown', ev => {
+document.querySelector('.handle').addEventListener('mousedown', event => {
+  event.preventDefault();
+  event.stopPropagation();
+
   document.addEventListener('mousemove', onDrag);
   
   document.addEventListener('mouseup', e => {
     document.removeEventListener('mousemove', onDrag);
-    document.body.classList.remove('noselect');
   });
 
 });
