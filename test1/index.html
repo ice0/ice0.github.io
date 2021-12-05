@@ -2,54 +2,75 @@
 <html lang="en">
 
 <head>
-  <meta name="description" content="Webpage description goes here" />
-  <meta charset="utf-8">
-  <title>Change_me</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+	<meta name="description" content="Webpage description goes here"/>
+	<meta charset="utf-8">
+	<title>Change_me</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div class="container">
-  <div class="sidebar">sidebar</div>
-  <div class="handle"></div>
-  <div class="content">
-    <p>content article</p>
-  </div>
+	<div class="sidebar">
+		<div class="card card-shadow">
+			<img src="images/os-icon.png" class="iconDetails">
+			<div class="header">Windows</div>
+			<div class="status vm-on">Running</div>
+		</div>
+		<div class="card card-shadow">
+			<img src="images/os-icon.png">
+			<div class="header">Linux</div>
+			<div class="status vm-off">Powered Off</div>
+		</div>
+		<div class="card card-shadow">
+			<img src="images/os-icon.png">
+			<div class="header">MacOS</div>
+			<div class="status vm-off">Powered Off</div>
+		</div>
+		<div class="card card-shadow">
+			<img src="images/os-icon.png">
+			<div class="header">Unix</div>
+			<div class="status vm-off">Powered Off</div>
+		</div>
+	</div>
+	<div class="handle">
+		<div class="dots"></div>
+	</div>
+	<div class="content">
+		<p>content article</p>
+	</div>
 </div>
 
 <script>
-var minOffset = 200;
-var maxOffset = 600;
+    const minOffset = 200;
+    const maxOffset = 600;
 
-function onDrag(ev) {
-  var offset = ev.pageX;
-    
-    offset = offset < minOffset ? minOffset : offset;
-    offset = offset > maxOffset ? maxOffset : offset;
+    function on_drag_event(event) {
+        let offset = event.pageX;
 
-    //console.log(offset)
-    //console.log(offset.toString() + "px")
-    
-    document.querySelector('.sidebar').style.width = offset.toString() + "px";
-    document.querySelector('.content').style.marginLeft = (offset + 10).toString() + "px";
-    document.body.classList.add('drag-sidebar');
-}
+        // clamp value
+        offset = offset < minOffset ? minOffset : offset;
+        offset = offset > maxOffset ? maxOffset : offset;
 
-document.querySelector('.handle').addEventListener('mousedown', event => {
-  event.preventDefault();
-  event.stopPropagation();
+        document.querySelector('.sidebar').style.width = offset.toString() + "px";
+        document.querySelector('.content').style.marginLeft = (offset + 10).toString() + "px";
+        document.body.classList.add('drag-sidebar');
+        document.querySelector('.container').classList.add('disable-hover');
+    }
 
-  document.addEventListener('mousemove', onDrag);
-  
-  document.addEventListener('mouseup', e => {
-    document.removeEventListener('mousemove', onDrag);
-    document.body.classList.remove('drag-sidebar');
-  });
+    document.querySelector('.handle').addEventListener('mousedown', event => {
+        event.preventDefault();
+        event.stopPropagation();
 
-});
+        document.addEventListener('mousemove', on_drag_event);
 
+        document.addEventListener('mouseup', () => {
+            document.removeEventListener('mousemove', on_drag_event);
+            document.body.classList.remove('drag-sidebar');
+            document.querySelector('.container').classList.remove('disable-hover');
+        });
+    });
 </script>
 
 </body>
